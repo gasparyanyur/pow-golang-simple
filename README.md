@@ -25,13 +25,6 @@ The resulting hash is checked to see if it starts with four zeroes (e.g., "0000"
 Step 3: Hashing the Challenge + Nonce
 The client uses a hashing algorithm like SHA-256 to hash the combined challenge + nonce string. It continues incrementing the nonce and hashing until it finds a valid nonce.
 
-For example:
-
-go
-Копировать
-data := challenge + strconv.Itoa(nonce) // Concatenate challenge and nonce
-hash := fmt.Sprintf("%x", sha256.Sum256([]byte(data))) // Hash the concatenated string
-The client checks whether the hash starts with "0000" (the target condition). If the hash matches the target condition, the nonce is considered valid.
 
 Step 4: Verification (Server Side)
 Once the client sends the challenge and the valid nonce back to the server, the server:
